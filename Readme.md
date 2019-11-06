@@ -1,7 +1,7 @@
 # Личный проект «TaskForce»
 
 * Студент: [Игорь Гольдфарб](https://up.htmlacademy.ru/yii/1/user/577479).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Пасунько](https://htmlacademy.ru/profile/id702351).
 
 ---
 
