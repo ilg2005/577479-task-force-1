@@ -4,3 +4,5 @@ use taskforce\classes\Test;
 
 $test = new Test();
 $test->displayClass();
+
+echo '';
