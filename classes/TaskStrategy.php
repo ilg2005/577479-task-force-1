@@ -37,15 +37,27 @@ class TaskStrategy
         ];
     }
 
-    public function getStatusAfterAction()
+    public function getStatusAfterAction($action)
     {
-        return [
-            UserActions::CREATE => TaskStatuses::NEW,
-            UserActions::CANCEL => TaskStatuses::CANCELED,
-            UserActions::START => TaskStatuses::ACTIVE,
-            UserActions::COMPLETE => TaskStatuses::COMPLETED,
-            UserActions::ABANDON => TaskStatuses::FAILED
-        ];
+        $status = null;
+        switch ($action) {
+            case UserActions::CREATE:
+                $status = TaskStatuses::NEW;
+                break;
+            case UserActions::CANCEL:
+                $status = TaskStatuses::CANCELED;
+                break;
+            case UserActions::START:
+                $status = TaskStatuses::ACTIVE;
+                break;
+            case UserActions::COMPLETE:
+                $status = TaskStatuses::COMPLETED;
+                break;
+            case UserActions::ABANDON:
+                $status = TaskStatuses::FAILED;
+                break;
+        }
+        return $status;
     }
 
 
