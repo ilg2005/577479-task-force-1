@@ -1,7 +1,7 @@
 <?php
 namespace taskforce\src;
 
-class TaskStrategy
+class TaskStrategyController
 {
     private $workerId;
     private $customerId;
