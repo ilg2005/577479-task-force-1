@@ -1,5 +1,9 @@
 <?php
-namespace taskforce\src;
+namespace taskforce\src\controllers;
+
+use taskforce\src\TaskStatuses;
+use taskforce\src\UserActions;
+use taskforce\src\UserRoles;
 
 class TaskStrategyController
 {
@@ -39,7 +43,6 @@ class TaskStrategyController
 
     public function getStatusAfterAction($action)
     {
-        $status = null;
         switch ($action) {
             case UserActions::CREATE:
                 $status = TaskStatuses::NEW;
@@ -55,6 +58,9 @@ class TaskStrategyController
                 break;
             case UserActions::ABANDON:
                 $status = TaskStatuses::FAILED;
+                break;
+            default:
+                $status = null;
                 break;
         }
         return $status;
