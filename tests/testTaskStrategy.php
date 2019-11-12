@@ -1,8 +1,8 @@
 <?php
 require_once '../vendor/autoload.php';
-use taskforce\classes\TaskStrategy;
-use taskforce\classes\UserActions;
-use taskforce\classes\TaskStatuses;
+use taskforce\src\TaskStrategy;
+use taskforce\src\UserActions;
+use taskforce\src\TaskStatuses;
 
 $taskStrategy = new TaskStrategy();
 $action = UserActions::ABANDON;

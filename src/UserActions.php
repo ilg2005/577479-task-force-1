@@ -1,7 +1,7 @@
 <?php
 
 
-namespace taskforce\classes;
+namespace taskforce\src;
 
 
 class UserActions
