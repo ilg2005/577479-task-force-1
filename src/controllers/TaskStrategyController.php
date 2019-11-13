@@ -1,9 +1,9 @@
 <?php
-namespace taskforce\src\controllers;
+namespace taskforce\controllers;
 
-use taskforce\src\constants\TaskStatuses;
-use taskforce\src\constants\UserActions;
-use taskforce\src\constants\UserRoles;
+use taskforce\constants\TaskStatuses;
+use taskforce\constants\UserActions;
+use taskforce\constants\UserRoles;
 
 class TaskStrategyController
 {

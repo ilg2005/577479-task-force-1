@@ -1,7 +1,7 @@
 <?php
 
 
-namespace taskforce\src\constants;
+namespace taskforce\constants;
 
 
 class UserActions
