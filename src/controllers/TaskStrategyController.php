@@ -1,7 +1,11 @@
 <?php
-namespace taskforce\classes;
+namespace taskforce\controllers;
 
-class TaskStrategy
+use taskforce\constants\TaskStatuses;
+use taskforce\constants\UserActions;
+use taskforce\constants\UserRoles;
+
+class TaskStrategyController
 {
     private $workerId;
     private $customerId;
@@ -39,7 +43,6 @@ class TaskStrategy
 
     public function getStatusAfterAction($action)
     {
-        $status = null;
         switch ($action) {
             case UserActions::CREATE:
                 $status = TaskStatuses::NEW;
@@ -55,6 +58,9 @@ class TaskStrategy
                 break;
             case UserActions::ABANDON:
                 $status = TaskStatuses::FAILED;
+                break;
+            default:
+                $status = false;
                 break;
         }
         return $status;
