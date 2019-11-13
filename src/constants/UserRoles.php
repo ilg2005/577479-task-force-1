@@ -1,7 +1,7 @@
 <?php
 
 
-namespace taskforce\src;
+namespace taskforce\src\constants;
 
 
 class UserRoles
