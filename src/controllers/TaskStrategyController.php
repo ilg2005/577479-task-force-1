@@ -60,7 +60,7 @@ class TaskStrategyController
                 $status = TaskStatuses::FAILED;
                 break;
             default:
-                $status = null;
+                $status = false;
                 break;
         }
         return $status;
