@@ -6,14 +6,15 @@ USE taskforce;
 
 CREATE TABLE profile
 (
-    id int AUTO_INCREMENT PRIMARY KEY,
-    address VARCHAR(1000),
-    birthday TIMESTAMP,
-    about TEXT,
-    categories BLOB,
-    phone VARCHAR(20),
-    skype VARCHAR(128),
-    messenger VARCHAR(128)
+    id          int AUTO_INCREMENT PRIMARY KEY,
+    avatar_file VARCHAR(128),
+    address     VARCHAR(1000),
+    birthday    TIMESTAMP,
+    about       TEXT,
+    categories  BLOB,
+    phone       VARCHAR(20),
+    skype       VARCHAR(128),
+    messenger   VARCHAR(128)
 
 );
 
