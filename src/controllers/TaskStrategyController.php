@@ -4,6 +4,7 @@ namespace taskforce\controllers;
 use taskforce\constants\TaskStatuses;
 use taskforce\constants\UserActions;
 use taskforce\constants\UserRoles;
+use taskforce\constants\WorkerCategories;
 
 class TaskStrategyController
 {
@@ -38,6 +39,20 @@ class TaskStrategyController
             UserActions::COMPLETE => 'Завершить',
             UserActions::RESPOND => 'Ответить',
             UserActions::ABANDON => 'Отказаться'
+        ];
+    }
+
+    public function getWorkerCategories() {
+        return [
+            WorkerCategories::TRANSLATION => 'Перевод текстов',
+            WorkerCategories::CLEANING => 'Уборка',
+            WorkerCategories::CARGO => 'Грузоперевозки',
+            WorkerCategories::NEO => 'Компьютерная помощь',
+            WorkerCategories::FLAT => 'Ремонт квартирный',
+            WorkerCategories::BEAUTY => 'Красота',
+            WorkerCategories::REPAIR => 'Ремонт техники',
+            WorkerCategories::PHOTO => 'Фото',
+            WorkerCategories::COURIER => 'Курьерские услуги'
         ];
     }
 
