@@ -6,8 +6,8 @@ USE taskforce;
 
 CREATE TABLE locations
 (
-    id          int AUTO_INCREMENT PRIMARY KEY,
-    city VARCHAR(64),
+    id        int AUTO_INCREMENT PRIMARY KEY,
+    city      VARCHAR(64),
     latitude  FLOAT,
     longitude FLOAT
 );
@@ -25,18 +25,19 @@ CREATE TABLE profile
     skype       VARCHAR(128),
     messenger   VARCHAR(128),
     FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE
-
 );
 
 CREATE TABLE users
 (
-    id                int AUTO_INCREMENT PRIMARY KEY,
-    registration_date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
-    name              VARCHAR(64)  NOT NULL,
-    email             VARCHAR(128) NOT NULL,
-    password          VARCHAR(128) NOT NULL,
-    role              TINYINT(1) DEFAULT 0,
-    profile_id        int,
+    id                   int AUTO_INCREMENT PRIMARY KEY,
+    registration_date    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+    name                 VARCHAR(64)  NOT NULL,
+    email                VARCHAR(128) NOT NULL,
+    password             VARCHAR(128) NOT NULL,
+    role                 TINYINT(1) DEFAULT 0,
+    rating               INT        DEFAULT 0,
+    latest_activity_time TIMESTAMP,
+    profile_id           int,
     FOREIGN KEY (profile_id) REFERENCES profile (id) ON DELETE CASCADE
 );
 
