@@ -4,17 +4,27 @@ CREATE DATABASE taskforce
 
 USE taskforce;
 
+CREATE TABLE locations
+(
+    id          int AUTO_INCREMENT PRIMARY KEY,
+    city VARCHAR(64),
+    latitude  FLOAT,
+    longitude FLOAT
+);
+
 CREATE TABLE profile
 (
     id          int AUTO_INCREMENT PRIMARY KEY,
     avatar_file VARCHAR(128),
     address     VARCHAR(1000),
+    location_id int,
     birthday    TIMESTAMP,
     about       TEXT,
     categories  BLOB,
     phone       VARCHAR(20),
     skype       VARCHAR(128),
-    messenger   VARCHAR(128)
+    messenger   VARCHAR(128),
+    FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE
 
 );
 
