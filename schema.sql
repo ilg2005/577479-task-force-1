@@ -35,7 +35,7 @@ CREATE TABLE users
     email                VARCHAR(128) NOT NULL,
     password             VARCHAR(128) NOT NULL,
     role                 TINYINT(1) DEFAULT 0,
-    rating               INT        DEFAULT 0,
+    rating               FLOAT        DEFAULT 0,
     latest_activity_time TIMESTAMP,
     profile_id           int,
     FOREIGN KEY (profile_id) REFERENCES profile (id) ON DELETE CASCADE
