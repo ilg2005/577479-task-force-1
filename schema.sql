@@ -14,24 +14,24 @@ CREATE TABLE locations
 
 CREATE TABLE portfolio
 (
-    id        int AUTO_INCREMENT PRIMARY KEY,
-    files     BLOB
+    id    int AUTO_INCREMENT PRIMARY KEY,
+    files BLOB
 );
 
 CREATE TABLE profile
 (
-    id          int AUTO_INCREMENT PRIMARY KEY,
-    avatar_file VARCHAR(128),
-    address     VARCHAR(1000),
-    location_id int,
-    birthday    TIMESTAMP,
-    about       TEXT,
-    categories  BLOB,
-    phone       VARCHAR(20),
-    skype       VARCHAR(128),
-    messenger   VARCHAR(128),
-    portfolio_id   int,
-    user_id     int,
+    id           int AUTO_INCREMENT PRIMARY KEY,
+    avatar_file  VARCHAR(128),
+    address      VARCHAR(1000),
+    location_id  int,
+    birthday     TIMESTAMP,
+    about        TEXT,
+    categories   BLOB,
+    phone        VARCHAR(20),
+    skype        VARCHAR(128),
+    messenger    VARCHAR(128),
+    portfolio_id int,
+    user_id      int,
     FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE,
     FOREIGN KEY (portfolio_id) REFERENCES portfolio (id) ON DELETE CASCADE
 );
