@@ -60,3 +60,13 @@ create index users_role_index
     on users (role);
 
 
+CREATE TABLE user_settings
+(
+    user_id int,
+    new_message  TINYINT DEFAULT 1,
+    actions_on_task TINYINT DEFAULT 0,
+    new_review TINYINT DEFAULT 0,
+    show_to_customer TINYINT DEFAULT 1,
+    hide_profile TINYINT DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
