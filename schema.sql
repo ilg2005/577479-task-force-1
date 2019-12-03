@@ -78,9 +78,35 @@ CREATE TABLE users_categories
 
 CREATE TABLE users_portfolio
 (
-    user_id   int,
-    file_name VARCHAR(128),
+    user_id  int,
+    filename VARCHAR(128),
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE TABLE task
+(
+    id            int AUTO_INCREMENT PRIMARY KEY,
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    title         VARCHAR(256) NOT NULL,
+    description   TEXT         NOT NULL,
+    category      int,
+    address       VARCHAR(256),
+    location_id   int,
+    budget        int UNSIGNED,
+    deadline      TIMESTAMP,
+    customer_id   int,
+    worker_id     int,
+    FOREIGN KEY (category) REFERENCES categories (category_value) ON DELETE CASCADE,
+    FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE,
+    FOREIGN KEY (customer_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (worker_id) REFERENCES users (id) ON UPDATE CASCADE
+);
+
+CREATE TABLE task_files
+(
+    task_id  int,
+    filename VARCHAR(128),
+    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
 );
 
 create index users_name_index
