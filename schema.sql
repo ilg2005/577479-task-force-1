@@ -15,7 +15,7 @@ CREATE TABLE locations
 CREATE TABLE categories
 (
     id             int AUTO_INCREMENT PRIMARY KEY,
-    category_name  VARCHAR(64),
+    category_name  VARCHAR(128),
     category_value int
 );
 
