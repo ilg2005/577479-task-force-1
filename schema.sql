@@ -31,7 +31,6 @@ CREATE TABLE profile
     skype        VARCHAR(128),
     messenger    VARCHAR(128),
     portfolio_id int,
-    user_id      int,
     FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE,
     FOREIGN KEY (portfolio_id) REFERENCES portfolio (id) ON DELETE CASCADE
 );
