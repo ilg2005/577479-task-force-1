@@ -96,7 +96,7 @@ CREATE TABLE task
     deadline      TIMESTAMP,
     customer_id   int,
     worker_id     int,
-    FOREIGN KEY (category) REFERENCES categories (category_value) ON DELETE CASCADE,
+    FOREIGN KEY (category) REFERENCES categories (id)  ON DELETE CASCADE,
     FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE,
     FOREIGN KEY (customer_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (worker_id) REFERENCES users (id) ON UPDATE CASCADE
