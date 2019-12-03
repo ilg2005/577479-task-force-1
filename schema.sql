@@ -76,7 +76,7 @@ CREATE TABLE users_categories
     FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
 
-CREATE TABLE user_portfolio
+CREATE TABLE users_portfolio
 (
     user_id   int,
     file_name VARCHAR(128),
