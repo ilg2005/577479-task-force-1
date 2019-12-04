@@ -14,9 +14,9 @@ CREATE TABLE locations
 
 CREATE TABLE categories
 (
-    id             int AUTO_INCREMENT PRIMARY KEY,
-    category_name  VARCHAR(64),
-    category_icon  VARCHAR(64)
+    id            int AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(64),
+    category_icon VARCHAR(64)
 );
 
 CREATE TABLE profile
@@ -90,14 +90,14 @@ CREATE TABLE task
     title         VARCHAR(256) NOT NULL,
     description   TEXT         NOT NULL,
     category      int,
-    status        int,
+    status        int       DEFAULT 0,
     address       VARCHAR(256),
     location_id   int,
     budget        int UNSIGNED,
     deadline      TIMESTAMP,
-    customer_id   int NOT NULL,
+    customer_id   int          NOT NULL,
     worker_id     int,
-    FOREIGN KEY (category) REFERENCES categories (id)  ON DELETE CASCADE,
+    FOREIGN KEY (category) REFERENCES categories (id) ON DELETE CASCADE,
     FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE,
     FOREIGN KEY (customer_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (worker_id) REFERENCES users (id) ON UPDATE CASCADE
@@ -108,6 +108,35 @@ CREATE TABLE task_files
     task_id  int,
     filename VARCHAR(128),
     FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+);
+
+CREATE TABLE reviews
+(
+    user_id         int,
+    task_id         int,
+    grade           TINYINT UNSIGNED,
+    grading_comment TEXT,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+);
+
+CREATE TABLE task_responses
+(
+    task_id        int,
+    worker_id      int,
+    worker_price   int UNSIGNED,
+    worker_comment TEXT,
+    FOREIGN KEY (worker_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+);
+
+CREATE TABLE correspondence
+(
+    task_id      int,
+    sender_id    int,
+    recipient_id int,
+    message      TEXT,
+    message_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 create index users_name_index
