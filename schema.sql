@@ -19,7 +19,7 @@ CREATE TABLE categories
     category_icon VARCHAR(64)
 );
 
-CREATE TABLE profile
+CREATE TABLE users_profile
 (
     id          int AUTO_INCREMENT PRIMARY KEY,
     avatar_file VARCHAR(128),
@@ -43,11 +43,11 @@ CREATE TABLE users
     role                 TINYINT(1) DEFAULT 0,
     latest_activity_time TIMESTAMP,
     is_favorite          TINYINT(1) DEFAULT 0,
-    profile_id           int,
-    FOREIGN KEY (profile_id) REFERENCES profile (id) ON DELETE CASCADE
+    users_profile_id           int,
+    FOREIGN KEY (users_profile_id) REFERENCES users_profile (id) ON DELETE CASCADE
 );
 
-CREATE TABLE user_statistics
+CREATE TABLE users_statistics
 (
     user_id       int,
     rating        FLOAT DEFAULT 0,
@@ -57,14 +57,14 @@ CREATE TABLE user_statistics
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
-CREATE TABLE user_settings
+CREATE TABLE users_settings
 (
     user_id          int,
     new_message      TINYINT DEFAULT 1,
     actions_on_task  TINYINT DEFAULT 0,
     new_review       TINYINT DEFAULT 0,
     show_to_customer TINYINT DEFAULT 1,
-    hide_profile     TINYINT DEFAULT 0,
+    hide_users_profile     TINYINT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE users_portfolio
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
-CREATE TABLE task
+CREATE TABLE tasks
 (
     id            int AUTO_INCREMENT PRIMARY KEY,
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -103,11 +103,11 @@ CREATE TABLE task
     FOREIGN KEY (worker_id) REFERENCES users (id) ON UPDATE CASCADE
 );
 
-CREATE TABLE task_files
+CREATE TABLE tasks_files
 (
     task_id  int,
     filename VARCHAR(128),
-    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+    FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE
 );
 
 CREATE TABLE reviews
@@ -117,17 +117,17 @@ CREATE TABLE reviews
     grade           TINYINT UNSIGNED,
     grading_comment TEXT,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+    FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE
 );
 
-CREATE TABLE task_responses
+CREATE TABLE tasks_responses
 (
     task_id        int,
     worker_id      int,
     worker_price   int UNSIGNED,
     worker_comment TEXT,
     FOREIGN KEY (worker_id) REFERENCES users (id) ON DELETE CASCADE,
-    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
+    FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE
 );
 
 CREATE TABLE correspondence
@@ -136,7 +136,10 @@ CREATE TABLE correspondence
     sender_id    int,
     recipient_id int,
     message      TEXT,
-    message_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    message_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
+    FOREIGN KEY (sender_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (recipient_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 create index users_name_index
@@ -152,18 +155,19 @@ create index users_role_index
 create index users_is_favorite_index
     on users (is_favorite);
 create index user_rating_index
-    on user_statistics (rating);
+    on users_statistics (rating);
 create index user_tasks_count_index
-    on user_statistics (tasks_count);
+    on users_statistics (tasks_count);
 create index user_views_count_index
-    on user_statistics (views_count);
+    on users_statistics (views_count);
 create index reviews_count_index
-    on user_statistics (reviews_count);
+    on users_statistics (reviews_count);
 create index user_id_index
     on users_categories (user_id);
 create index category_id_index
     on users_categories (category_id);
 create index task_creation_date_index
-    on task (creation_date);
+    on tasks (creation_date);
 create index task_title_index
-    on task (title);
+    on tasks (title);
+
