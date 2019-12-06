@@ -43,7 +43,7 @@ CREATE TABLE users
     role                 TINYINT(1) DEFAULT 0,
     latest_activity_time TIMESTAMP,
     is_favorite          TINYINT(1) DEFAULT 0,
-    users_profile_id           int,
+    users_profile_id     int,
     FOREIGN KEY (users_profile_id) REFERENCES users_profile (id) ON DELETE CASCADE
 );
 
@@ -59,12 +59,12 @@ CREATE TABLE users_statistics
 
 CREATE TABLE users_settings
 (
-    user_id          int,
-    new_message      TINYINT DEFAULT 1,
-    actions_on_task  TINYINT DEFAULT 0,
-    new_review       TINYINT DEFAULT 0,
-    show_to_customer TINYINT DEFAULT 1,
-    hide_users_profile     TINYINT DEFAULT 0,
+    user_id            int,
+    new_message        TINYINT DEFAULT 1,
+    actions_on_task    TINYINT DEFAULT 0,
+    new_review         TINYINT DEFAULT 0,
+    show_to_customer   TINYINT DEFAULT 1,
+    hide_users_profile TINYINT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
