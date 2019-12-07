@@ -35,25 +35,25 @@ CREATE TABLE users_profile
 
 CREATE TABLE users
 (
-    id                   int AUTO_INCREMENT PRIMARY KEY,
-    registration_date    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
-    name                 VARCHAR(64)  NOT NULL,
-    email                VARCHAR(128) NOT NULL,
-    password             VARCHAR(128) NOT NULL,
-    role                 TINYINT(1) DEFAULT 0,
-    latest_activity_time TIMESTAMP,
-    is_favorite          TINYINT(1) DEFAULT 0,
-    users_profile_id     int,
+    id                int AUTO_INCREMENT PRIMARY KEY,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    name              VARCHAR(64)  NOT NULL,
+    email             VARCHAR(128) NOT NULL,
+    password          VARCHAR(128) NOT NULL,
+    users_profile_id  int,
     FOREIGN KEY (users_profile_id) REFERENCES users_profile (id) ON DELETE CASCADE
 );
 
 CREATE TABLE users_statistics
 (
-    user_id       int,
-    rating        FLOAT DEFAULT 0,
-    reviews_count INT   DEFAULT 0,
-    tasks_count   INT   DEFAULT 0,
-    views_count   INT   DEFAULT 0,
+    user_id              int,
+    role                 TINYINT(1) DEFAULT 0,
+    latest_activity_time TIMESTAMP,
+    is_favorite          boolean    DEFAULT false,
+    rating               FLOAT      DEFAULT 0,
+    reviews_count        INT        DEFAULT 0,
+    tasks_count          INT        DEFAULT 0,
+    views_count          INT        DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
@@ -149,11 +149,11 @@ create unique index users_email_index
 create index users_registration_date_index
     on users (registration_date);
 create index users_latest_activity_time_index
-    on users (latest_activity_time);
+    on users_statistics (latest_activity_time);
 create index users_role_index
-    on users (role);
+    on users_statistics (role);
 create index users_is_favorite_index
-    on users (is_favorite);
+    on users_statistics (is_favorite);
 create index user_rating_index
     on users_statistics (rating);
 create index user_tasks_count_index
