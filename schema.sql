@@ -64,7 +64,7 @@ CREATE TABLE users_settings
     actions_on_task    TINYINT DEFAULT 0,
     new_review         TINYINT DEFAULT 0,
     show_to_customer   TINYINT DEFAULT 1,
-    hide_users_profile TINYINT DEFAULT 0,
+    hide_user_profile  TINYINT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
