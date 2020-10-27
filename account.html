@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TaskForce</title>
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">  
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <header class="page-header">
         <div class="main-container page-header__container">
             <div class="page-header__logo">
-                <a href="index.html">
+                <a href="index.html">  
                     <svg class="page-header__logo-image" id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1634 646.35">
                         <title>taskforce_logo2-01</title>
                         <g>
@@ -20,7 +20,7 @@
                                 <path d="M718.46,34.54l29,31c4.41,4.71,11.47-2.38,7.08-7.08l-29-31c-4.41-4.71-11.47,2.38-7.08,7.08Z" transform="translate(-5.5 -7.17)"/>
                                 <path d="M782,12V52c0,6.43,10,6.45,10,0V12c0-6.43-10-6.45-10,0Z" transform="translate(-5.5 -7.17)"/>
                                 <path d="M822.54,66.54l31-30c4.63-4.49-2.45-11.55-7.08-7.08l-31,30c-4.63,4.49,2.45,11.55,7.08,7.08Z" transform="translate(-5.5 -7.17)"/>
-                            </g>
+                            </g>  
                             <rect y="272.33" width="605" height="18"/>
                             <rect x="1027" y="272.33" width="607" height="18"/>
                             <g>
@@ -114,7 +114,8 @@
                        <div class="account__redaction-section-wrapper">
                             <div class="account__redaction-avatar">
                                 <img src="./img/man-glasses.jpg" width="156" height="156">
-                                <a href="#" class="link-regular">Сменить аватар</a>
+                                <input type="file" name="avatar" id="upload-avatar">
+                                <label for="upload-avatar" class="link-regular">Сменить аватар</label>
                             </div>
                             <div class="account__redaction">
                                 <div class="account__input account__input--name">
@@ -125,13 +126,19 @@
                                     <label for="201">email</label>
                                     <input class="input textarea" id="201" name="" placeholder="DenisT@bk.ru">
                                 </div>
-                                <div class="account__input account__input--address">
-                                    <label  for="202">Адрес</label>
-                                    <input class="input textarea"  id="202" name="" placeholder="Санкт-Петербург, Московский район">
+                                <div class="account__input account__input--name">
+                                    <label  for="202">Город</label>
+                                  <select class="multiple-select input multiple-select-big" size="1" id="202" name="town[]">
+                                    <option value="Moscow">Москва</option>
+                                    <option selected="" value="SPB">Санкт-Петербург</option>
+                                    <option value="Krasnodar">Краснодар</option>
+                                    <option value="Irkutsk">Иркутск</option>
+                                    <option value="Vladivostok">Владивосток</option>
+                                  </select>
                                 </div>
                                 <div class="account__input account__input--date">
                                     <label for="203">День рождения</label>
-                                    <input id="203"  class="input-middle input input-date" type="text" placeholder="15.08.1987">
+                                    <input id="203"  class="input-middle input input-date" type="date" placeholder="15.08.1987">
                                 </div>
                                 <div class="account__input account__input--info">
                                     <label for="204">Информация о себе</label>
@@ -140,26 +147,22 @@
                             </div>
                        </div>
                        <h3 class="div-line">Выберите свои специализации</h3>
-                       <div class="account__redaction-section-wrapper">
-                           <div class="search-task__categories account_checkbox">
-                               <input class="visually-hidden checkbox__input" id="205" type="checkbox" name="" value="">
-                               <label for="205">Курьерские услуги</label>
-                               <input class="visually-hidden checkbox__input" id="206" type="checkbox" name="" value=""d>
-                               <label  for="206">Ремонт транспорта</label>
-                           </div>
-                           <div class="search-task__categories account_checkbox">
-                               <input class="visually-hidden checkbox__input" id="207" type="checkbox" name="" value="">
-                               <label for="207">Грузоперевозки</label>
-                               <input class="visually-hidden checkbox__input" id="208" type="checkbox" name="" value="">
-                               <label  for="208">Удалённая помощь</label>
-                           </div>
-                           <div class="search-task__categories account_checkbox">
-                               <input class="visually-hidden checkbox__input" id="209" type="checkbox" name="" value="" checked>
-                               <label for="209">Перевод текстов</label>
-                               <input class="visually-hidden checkbox__input" id="210" type="checkbox" name="" value="">
-                               <label  for="210">Выезд на стрелку</label>
-                           </div>
-                       </div>
+                     <div class="account__redaction-section-wrapper">
+                     <div class="search-task__categories account_checkbox--bottom">
+                       <input class="visually-hidden checkbox__input" id="205" type="checkbox" name="" value="" checked>
+                       <label for="205">Курьерские услуги</label>
+                       <input class="visually-hidden checkbox__input" id="206" type="checkbox" name="" value="" checked>
+                       <label  for="206">Грузоперевозки</label>
+                       <input class="visually-hidden checkbox__input" id="207" type="checkbox" name="" value="">
+                       <label for="207">Перевод текстов</label>
+                       <input class="visually-hidden checkbox__input" id="208" type="checkbox" name="" value="" checked>
+                       <label for="208">Ремонт транспорта</label>
+                       <input class="visually-hidden checkbox__input" id="209" type="checkbox" name="" value="">
+                       <label  for="209">Удалённая помощь</label>
+                       <input class="visually-hidden checkbox__input" id="210" type="checkbox" name="" value="">
+                       <label  for="210">Выезд на стрелку</label>
+                     </div>
+                     </div>
                        <h3 class="div-line">Безопасность</h3>
                        <div class="account__redaction-section-wrapper account__redaction">
                            <div class="account__input">
@@ -182,7 +185,7 @@
                                <input class="input textarea" type="password" id="214" name="" placeholder="DenisT">
                            </div>
                            <div class="account__input" >
-                               <label for="215">Другой мессенджер</label>
+                               <label for="215">Telegram</label>
                                <input class="input textarea" id="215" name="" placeholder="@DenisT">
                            </div>
                        </div>
@@ -201,7 +204,7 @@
                                <input class="visually-hidden checkbox__input" id="219" type="checkbox" name="" value="">
                                <label for="219">Показывать мои контакты только заказчику</label>
                                <input class="visually-hidden checkbox__input" id="220" type="checkbox" name="" value="" checked>
-                               <label  for="220">Показывать мои контакты только заказчику</label>
+                               <label  for="220">Не показывать мой профиль</label>
                            </div>
                        </div>
                     </div>
